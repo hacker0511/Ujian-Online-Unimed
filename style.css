@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- Reset & Base Style --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top left, #b9f3fc, #88e0ef, #a5f1e9);
+    position: relative;
+    overflow-x: hidden;
+    color: #2d3748;
+    /* Proteksi Tambahan: Mencegah seleksi teks soal */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.bg-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/simple-dashed.png');
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.container {
+    width: 95%;
+    max-width: 650px;
+    z-index: 5;
+    padding: 20px 0;
+}
+
+/* --- Glassmorphism Card --- */
+.glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* --- Header & Branding --- */
+.main-title { color: #16314a; font-size: 22px; font-weight: 700; margin-bottom: 5px; }
+.unimed-logo { width: 75px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); margin-bottom: 10px; }
+.unimed-subtext { font-weight: 700; color: #2c3e50; font-size: 13px; letter-spacing: 2px; margin-bottom: 20px; display: block; }
+
+.exam-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    font-weight: 600;
+    color: #16314a;
+    font-size: 14px;
+}
+
+#timer {
+    color: #e53e3e;
+    background: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* --- Area Soal & Opsi --- */
+.question-box {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.question-number {
+    font-size: 13px;
+    color: #3182ce;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.main-question {
+    font-size: 17px;
+    color: #1a202c;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.option-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 14px 18px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    border: 2px solid transparent;
+}
+
+.option-item:hover {
+    background: white;
+    border-color: #38b2ac;
+    transform: translateX(5px);
+}
+
+.option-item input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    accent-color: #38b2ac;
+    cursor: pointer;
+}
+
+/* --- Form Inputs & Select --- */
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto 15px;
+}
+
+.input-icon-box {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #3182ce;
+    z-index: 10;
+}
+
+input[type="text"], 
+input[type="password"], 
+.select-field {
+    width: 100%;
+    padding: 14px 15px 14px 50px;
+    border-radius: 15px;
+    border: 2px solid #bee3f8;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-family: inherit;
+    transition: 0.3s;
+    color: #2d3748;
+}
+
+input:focus, .select-field:focus {
+    outline: none;
+    border-color: #38b2ac;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(56, 178, 172, 0.1);
+}
+
+.select-field {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233182ce' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 16px;
+}
+
+/* --- Tombol-Tombol --- */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+.btn-nav {
+    flex: 1;
+    padding: 14px;
+    border-radius: 15px;
+    border: none;
+    background: #edf2f7;
+    color: #4a5568;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-nav:hover:not(:disabled) {
+    background: #e2e8f0;
+    color: #2d3748;
+}
+
+.btn-nav:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #48bb78, #38b2ac);
+    color: white;
+    border: none;
+    padding: 14px 45px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(56, 178, 172, 0.3);
+}
+
+/* Tombol Admin Khusus */
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-danger {
+    flex: 1;
+    background: #e53e3e;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-danger:hover {
+    background: #c53030;
+    transform: scale(1.02);
+}
+
+.btn-admin-access {
+    background: #3182ce;
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border-radius: 15px;
+    border: none;
+    font-weight: 700;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.btn-exit {
+    background: none;
+    color: #e53e3e;
+    font-weight: 600;
+    margin-top: 15px;
+    cursor: pointer;
+    border: none;
+}
+
+/* --- Table Leaderboard --- */
+.leaderboard-container {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 15px;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.leaderboard-table th {
+    background: #3182ce;
+    color: white;
+    padding: 15px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.leaderboard-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #edf2f7;
+    font-size: 13px;
+    color: #2d3748;
+}
+
+/* --- Footer --- */
+.main-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    color: #718096;
+}
+
+/* --- Utility --- */
+.hidden { display: none; }
+.line-break { border: none; border-top: 1px solid rgba(0,0,0,0.1); margin: 20px 0; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+    .glass-card { padding: 25px 20px; }
+    .main-title { font-size: 18px; }
+    .navigation-buttons, .admin-actions { flex-direction: column; }
+    .btn-nav, .btn-primary, .btn-danger { width: 100%; }
+}

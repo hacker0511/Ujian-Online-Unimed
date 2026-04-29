@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Ujian Online - Kelompok 6 UNIMED</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-decoration"></div>
+
+    <div class="container">
+        <!-- Section 1: Login -->
+        <div id="login-section" class="glass-card">
+            <h2 class="main-title">Sistem Ujian Online (CBT)</h2>
+            <div class="logo-container">
+                <img src="assets/logo-unimed.png.png" alt="Logo UNIMED" class="unimed-logo">
+                <p class="unimed-subtext">UNIMED</p>
+            </div>
+            
+            <div class="input-wrapper">
+                <div class="input-icon-box"><i class="fa-solid fa-circle-user"></i></div>
+                <input type="text" id="username" placeholder="Masukkan Nama Lengkap Anda..." required>
+            </div>
+
+            <div class="input-wrapper">
+                <div class="input-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+                <input type="text" id="user-class" placeholder="Ketik Kelas Anda (Contoh: XI RPL 1)..." required>
+            </div>
+            
+            <button class="btn-primary" onclick="startExam()">
+                Mulai Ujian <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Section 2: Area Ujian -->
+        <div id="exam-section" class="glass-card hidden">
+            <div class="exam-header">
+                <span id="display-name">Peserta: -</span>
+                <span id="timer"><i class="fa-regular fa-clock"></i> 20:00</span>
+            </div>
+            <hr class="line-break">
+            <div id="question-container"></div>
+        </div>
+
+        <!-- Section 3: Hasil & Panel Admin -->
+        <div id="result-section" class="glass-card hidden">
+            <h2 class="main-title">Hasil Ujian</h2>
+            <div id="score-summary" class="score-box"></div>
+            <hr class="line-break">
+            
+            <div id="admin-login-area">
+                <p class="admin-note"><strong>Panel Guru:</strong> Lihat Rekap Nilai</p>
+                <div class="input-wrapper">
+                    <div class="input-icon-box"><i class="fa-solid fa-user-tie"></i></div>
+                    <select id="admin-name" class="select-field">
+                        <option value="">-- Pilih Nama Guru --</option>
+                        <option value="AULIA YOLANDA RITONGA">AULIA YOLANDA RITONGA</option>
+                        <option value="AZZAHRA KHAIRIAH">AZZAHRA KHAIRIAH</option>
+                        <option value="GRACE PATRESYAH TAMBUNAN">GRACE PATRESYAH TAMBUNAN</option>
+                        <option value="HAFIZAH">HAFIZAH</option>
+                    </select>
+                </div>
+                <div class="input-wrapper">
+                    <div class="input-icon-box"><i class="fa-solid fa-lock"></i></div>
+                    <input type="password" id="admin-pass" placeholder="Masukkan NIM (Password)">
+                </div>
+                <button onclick="checkAdmin()" class="btn-admin-access">Buka Akses Guru</button>
+            </div>
+
+            <div id="admin-content" class="hidden">
+                <h3 class="welcome-admin">Selamat Datang, <span id="logged-admin"></span></h3>
+                <div class="leaderboard-container">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Skor</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body"></tbody>
+                    </table>
+                </div>
+                <div class="admin-actions">
+                    <button onclick="downloadData()" class="btn-primary">
+                        <i class="fa-solid fa-file-csv"></i> Download CSV
+                    </button>
+                    <button onclick="clearAllData()" class="btn-danger">
+                        <i class="fa-solid fa-trash-can"></i> Hapus Semua Data
+                    </button>
+                </div>
+            </div>
+            <button onclick="resetApp()" class="btn-exit">Keluar ke Halaman Utama</button>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-left">© UNIMED - Sistem Ujian Online</div>
+        <div class="footer-right"><span>Bantuan</span> | <span>Kontak</span></div>
+    </footer>
+
+    <script src="javascript/script.js"></script>
+</body>
+</html>
